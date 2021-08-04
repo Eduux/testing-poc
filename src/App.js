@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.css'
 
-function App() {
+function App({ title }) {
+  const [password, setPassword] = useState('');
+  const [isOpen, setIsOpen] = useState();
+
+  useEffect(() => {
+    if (password === 'feijao') setIsOpen(true);
+    else setIsOpen(false);
+  }, [password])
+
+  const setLocked = () => {
+    setPassword('');
+    setIsOpen(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {title && <h1 data-testid="title">{title}</h1>}
+
+      <input type="text" data-testid="input-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+
+      <div className="content">
+        {isOpen ? (
+          <button data-testid="button-unlocked" onClick={() => setLocked()}>
+            Destravado
+          </button>
+        ) : (
+          <button data-testid="button-locked">
+            Travado
+          </button>
+        )}
+      </div>
     </div>
   );
 }

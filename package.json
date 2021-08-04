@@ -14,8 +14,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --verbose=true --coverage=true",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns" : [
+      "src/index.js" 
+    ]
   },
   "eslintConfig": {
     "extends": [
