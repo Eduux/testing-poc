@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import './App.css'
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App({ title }) {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [isOpen, setIsOpen] = useState();
 
   useEffect(() => {
-    if (password === 'feijao') setIsOpen(true);
+    if (password === "vortigo") setIsOpen(true);
     else setIsOpen(false);
-  }, [password])
+  }, [password]);
 
   const setLocked = () => {
-    setPassword('');
+    setPassword("");
     setIsOpen(false);
-  }
+  };
 
   return (
     <div className="container">
       {title && <h1 data-testid="title">{title}</h1>}
 
-      <input type="text" data-testid="input-password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+      <input
+        type="text"
+        data-testid="input-password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
       <div className="content">
         {isOpen ? (
@@ -27,9 +32,7 @@ function App({ title }) {
             Destravado
           </button>
         ) : (
-          <button data-testid="button-locked">
-            Travado
-          </button>
+          <button data-testid="button-locked">Travado</button>
         )}
       </div>
     </div>
