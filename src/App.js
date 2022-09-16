@@ -6,7 +6,7 @@ function App({ title }) {
   const [isOpen, setIsOpen] = useState();
 
   useEffect(() => {
-    if (password === "vortigo") setIsOpen(true);
+    if (password === "teste") setIsOpen(true);
     else setIsOpen(false);
   }, [password]);
 
